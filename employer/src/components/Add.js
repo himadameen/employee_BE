@@ -36,9 +36,7 @@ const Add = () => {
             }
         }
     }
-
-
-
+    
     return (
         <>
             <div className='fullcont'>
