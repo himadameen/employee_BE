@@ -16,12 +16,12 @@ app.use("/", employeeRoutes);
 
 mongoose.connect(process.env.MONGO_URI);
 
-if(process.env.NODE_ENV === "production"){
-    app.use(express.static("employer/build"));
-    app.get("*", (req,res) => {
-        res.sendFile(path.resolve(__dirname, "employer", "build", "index.html"));
-    })
-}
+// if(process.env.NODE_ENV === "production"){
+//     app.use(express.static("employer/build"));
+//     app.get("*", (req,res) => {
+//         res.sendFile(path.resolve(__dirname, "employer", "build", "index.html"));
+//     })
+// }
 
 
-app.listen(process.env.APP_PORT || 2000);
+app.listen(process.env.PORT || 2000);
