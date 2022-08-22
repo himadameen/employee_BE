@@ -15,6 +15,7 @@ app.use(cors());
 app.use("/", employeeRoutes);
 
 mongoose.connect(process.env.MONGO_URI);
+mongoose.connect('mongodb+srv://Ameen:Hameen99@cluster0.dlzjf.mongodb.net/employee?retryWrites=true&w=majority');
 
 // if(process.env.NODE_ENV === "production"){
 //     app.use(express.static("employer/build"));
