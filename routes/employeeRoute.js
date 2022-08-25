@@ -63,6 +63,18 @@ router.put("/update/:username", async (req,res) => {
     }
 })
 
+router.put("/update", async (req,res) => {
+    try{
+        const temp = req.params.username;
+        const response = await model.findOneAndUpdate({'username' : temp}, req.body, {new:true});
+        res.status(200).json(response);
+        console.log("data updated");
+    }
+    catch(err){
+        res.status(400).json(err);
+    }
+})
+
 router.delete('/:username',async (req,res) => {
     try{
         const temp = req.params.username;
