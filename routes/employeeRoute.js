@@ -16,7 +16,7 @@ router.get('/', async (req,res) => {
 router.get('/:username', async (req,res) => {
     try{
 
-        const temp = req.params.username;
+        const temp = req.body.username;
         const response = await model.findOne({'username' : temp});
         res.status(200).json(response);
         console.log(`${username} data is shown`);
@@ -53,7 +53,7 @@ router.post('/add_employee' , async (req,res) => {
 
 router.put("/update/:username", async (req,res) => {
     try{
-        const temp = req.body.username;
+        const temp = req.params.username;
         const response = await model.findOneAndUpdate({'username' : temp}, req.body, {new:true});
         res.status(200).json(response);
         console.log("data updated");
