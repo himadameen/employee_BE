@@ -13,21 +13,17 @@ router.get('/', async (req,res) => {
     }
 })
 
-router.get('/:username', async (req,res) => {
+router.get('/:_id', async (req,res) => {
     try{
-
-        const temp = req.body.username;
-        const response = await model.findOne({'username' : temp});
+        const temp = req.params._id;
+        const response = await model.findOne({'_id' : temp});
         res.status(200).json(response);
-        console.log(`${username} data is shown`);
-
+        console.log(`${response}`);
     }
     catch(err){
-        res.status(400).json(err);
+           res.status(400).json(err); 
     }
 })
-
-
 
 router.post('/add_employee' , async (req,res) => {
     try{
@@ -44,24 +40,23 @@ router.post('/add_employee' , async (req,res) => {
         const response = await newData.save();
         console.log("data is created", response);
         res.status(201).json(response);
-
     }
     catch(err){
         res.status(400).json(err);
     }
 })
 
-// router.put("/update/:username", async (req,res) => {
-//     try{
-//         const temp = req.body.username;
-//         const response = await model.findOneAndUpdate({'username' : temp}, req.body, {new:true});
-//         res.status(200).json(response);
-//         console.log("data updated");
-//     }
-//     catch(err){
-//         res.status(400).json(err);
-//     }
-// })
+router.put("/update/:_id", async (req,res) => {
+    try{
+        const temp = req.body._id;
+        const response = await model.findOneAndUpdate({'_id' : temp}, req.body, {new:true});
+        res.status(200).json(response);
+        console.log("data updated");
+    }
+    catch(err){
+        res.status(400).json(err);
+    }
+})
 
 router.put("/update", async (req,res) => {
     try{

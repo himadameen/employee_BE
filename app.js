@@ -1,28 +1,23 @@
 const express = require("express");
 const cors = require("cors");
 const mongoose = require('mongoose');
-// require("dotenv").config({path : ".env"});
+const bodyParser = require("body-parser");
+require("dotenv").config({path : ".env"});
 const app = express();
 
 const employeeRoutes = require('./routes/employeeRoute');
+const newUserRoute  =require('./routes/newuser');
 
 
-
-app.use(express.json());
+app.use(bodyParser.json({ limit: "50mb" }));
+app.use(bodyParser.urlencoded({ limit: "50mb", extended: true, parameterLimit: 50000 }));
 app.use(cors());
 
 
 app.use("/", employeeRoutes);
+app.use("/new", newUserRoute);
 
-// mongoose.connect(process.env.MONGO_URI);
-mongoose.connect('mongodb+srv://Ameen:Hameen99@cluster0.dlzjf.mongodb.net/employee?retryWrites=true&w=majority');
-
-// if(process.env.NODE_ENV === "production"){
-//     app.use(express.static("employer/build"));
-//     app.get("*", (req,res) => {
-//         res.sendFile(path.resolve(__dirname, "employer", "build", "index.html"));
-//     })
-// }
+mongoose.connect(process.env.MONGOURI);
 
 
-app.listen(process.env.PORT || 2000);
+app.listen(process.env.APP_PORT || 2000);
