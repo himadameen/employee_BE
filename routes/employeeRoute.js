@@ -34,7 +34,7 @@ router.post('/add_employee' , async (req,res) => {
             phone : req.body.phone,
             status : req.body.status,
             gender : req.body.gender,
-            profile : req.body.profile,
+            profile : req.body.profile
         });
 
         const response = await newData.save();

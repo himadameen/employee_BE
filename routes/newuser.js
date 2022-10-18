@@ -12,7 +12,7 @@ router.get('/newUser', async(req,res) =>{
         console.log("user data is showed");
     }
     catch(err){
-        res.status(400).json(err);
+        res.status(400).json(err)
     }
 })
 
